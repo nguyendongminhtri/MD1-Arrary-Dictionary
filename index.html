@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="dic">
+<button onclick="dictionary()">TransLate</button>
+<p style="color: blue" id="result"></p>
+</body>
+</html>
+<script>
+let index = -1;
+   function dictionary(){
+       let arrVNI = ["Xin Chào", "Tạm Biệt", "Yêu"];
+       let arrEND = ['hello', 'good bye', 'love'];
+       let dic = document.getElementById('dic').value;
+       dic = dic.toLowerCase();
+       console.log('dic = ', dic)
+       for (const arrENDKey in arrEND) {
+           console.log('check --> ',dic ===arrEND[arrENDKey])
+           if(dic===arrEND[arrENDKey]){
+               index = arrENDKey;
+               console.log('index trong if = ', index)
+               break;
+           } else {
+               index = -1;
+           }
+       }
+       for (const x in arrVNI) {
+           if(index!=-1){
+               document.getElementById('result').innerHTML = arrVNI[index];
+           } else {
+               document.getElementById('result').innerText = 'Not Found!'
+           }
+       }
+   }
+</script>
